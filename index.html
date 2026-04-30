@@ -1,23 +1,1176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello Bootstrap 5.2.3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <title>SaaS Builder</title>
+
+    <!-- Bootstrap 5.2.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f6f9fc;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: white;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: #0d6efd;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0d6efd, #4cc9f0);
+            color: white;
+        }
+
+        .hero h1 {
+            font-weight: 700;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            border-radius: 50px;
+            padding: 10px 25px;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing .card-header {
+            background: #202942;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Highlight middle plan */
+        /* .popular {
+    background: linear-gradient(135deg, #0d6efd, #4cc9f0);
+    color: white;
+    background: linear-gradient(135deg, #4ac4f3, #202942);
+    background: linear-gradient(135deg, #4ac4f3, #1aa0d8); 
+} */
+        .popular .card-header {
+            /* background: #4ac4f3; */
+            background: linear-gradient(135deg, #4ac4f3, #0ff0fc);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+        }
+
+        .feature-box {
+            padding: 20px;
+            border-radius: 10px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .feature-box-dark {
+            padding: 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+            background: linear-gradient(135deg, #007CC1 0%, #07488E 100%);
+            color: #fff;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #fff;
+            padding: 80px 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0d1b2a;
+            color: white;
+            padding: 40px 0;
+        }
+
+        /* Mail Us Button in Nav Bar */
+        .btn-custom {
+            position: relative;
+            /* Needed for pseudo-element positioning */
+            border-radius: 50px;
+            padding: 10px 25px;
+            background: #062269;
+            color: #fff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            /* To contain the pseudo-element */
+        }
+
+        /* Hover effect with diagonal flash */
+        .btn-custom:hover::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            /* Start off-screen on the left */
+            width: 200%;
+            /* Make it wide enough to cover the button diagonally */
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transform: skewX(-20deg);
+            /* Skew to create diagonal effect */
+            animation: flashDiagonal 0.6s forwards;
+            pointer-events: none;
+            /* So it doesn't block interactions */
+        }
+
+        /* Keyframes for the diagonal flash animation */
+        @keyframes flashDiagonal {
+            from {
+                left: -100%;
+            }
+
+            to {
+                left: 100%;
+            }
+        }
+
+        /* Optional: keep background on hover as you had before */
+        .btn-custom:hover {
+            background: #4ac4f3;
+            border: 1px solid #fff;
+        }
+
+    /* Custom blue primary Btn */
+    .btn-primary-custom{
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 14px 32px !important;
+    border-radius: 50px !important;
+    background: #0ea5e9 !important;
+    color: #fff !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    box-shadow: 0 8px 24px 
+    color-mix(in srgb, #0ea5e9, transparent 60%) !important;
+ }
+
+ /* h2 after underline */
+ h2:after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #0ea5e9;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+    </style>
 </head>
-<body>
-  <div class="container text-center mt-5">
-    <h1 class="text-primary">Hello World 🚀</h1>
-    <p class="lead">My first Bootstrap 5.2.3 website</p>
-    <button class="btn btn-success" onclick="sayHello()">Click Me</button>
-  </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">soFFer</a>
+
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
+                </ul>
+                <a href="pages/appointment" class="fs-6 btn btn-sm btn-custom text-center text-white">Mail Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero text-center">
+        <div class="container">
+            <h1>Build Your Business Website Today</h1>
+            <p class="mt-3">Affordable Static & Ecommerce Websites for Small Businesses</p>
+            <a href="#" class="btn btn-light btn-custom mt-3">View Plans</a>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-5 text-center">
+        <div class="container">
+        <h2>About MahaRaja Retail</h2>
+        <p class="lead">
+        We provide modern, fast, and SEO-optimized websites for businesses at very low monthly cost.
+        </p>
+        <p>
+        SSL • CDN • Mobile Responsive • SEO Ready • Contact Forms • WhatsApp Integration
+        </p>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-5 bg-light text-center">
+        <div class="container">
+        <h2>What We Offer</h2>
+
+        <div class="row mt-4">
+
+        <div class="col-md-4">
+        <h5>Static Websites</h5>
+        <p>Fast, secure, SEO-friendly websites for small businesses.</p>
+        </div>
+
+        <div class="col-md-4">
+        <h5>Custom Ecommerce</h5>
+        <p>Fully functional ecommerce websites with custom features.</p>
+        </div>
+
+        <div class="col-md-4">
+        <h5>All-in-One Setup</h5>
+        <p>Hosting, SSL, CDN, and support included.</p>
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <h2>Powerful Features</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="feature-box shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/pen-tool.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;background: linear-gradient(135deg, #007CC1 0%, #07488E 100%);"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Responsive Design</h5>
+                        <p>Works perfectly on all devices.Your website may well be a customer’s first impression of your
+                            business.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box-dark shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/business.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Digital Marketing</h5>
+                        <p>Create and manage top-performing social campaigns and start developing a dedicated customer
+                            fan base.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box shadow-sm">
+                            <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/seo.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;background: linear-gradient(135deg, #007CC1 0%, #07488E 100%);"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Fast Hosting</h5>
+                        <p>Lightning-fast performance worldwide.Outrank your competitor and stay at the top of Google with our targeted, affordable with our strategy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-2">
+
+                <div class="col-md-4">
+                    <div class="feature-box-dark shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/e-commerce-solution.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>E-Commerce Solutions</h5>
+                        <p>E-Commerce is the fastest-growing retail market in India. You need to stand out from the crowd in order to thrive.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box shadow-sm">
+                            <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/website.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;background: linear-gradient(135deg, #007CC1 0%, #07488E 100%);"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Web Application</h5>
+                        <p>Experts in Dynamic Web design and Development and Custom Web Web Applications in various plotforms.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box-dark shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/clean-computer-virus-1.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;background: #fff;"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Security</h5>
+                        <p>Start your journey towards success with professionally designed and Secured Https website.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: #202942;">Pricing Plans</h2>
+                <p class="text-muted">We provide modern, fast, and SEO-optimized websites.</p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Standard -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-header fs-3">Standard<p class="price">₹ <span style="color: #4ac4f3;">29.99
+                                </span><span class="fs-6"> / mo</span></p>
+                        </div>
+                        <div class="card-body">
+
+                            <ul class="list-unstyled text-secondary mb-4">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>HTML5 & CSS3</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Bootstrap v5</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Responsive Layout</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Cross Browser Support</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center text-danger">
+                                    <span>Contact Form</span>
+                                    <span class="text-danger fw-bold fs-4">✖</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-dark btn-custom" style="background: #202942;">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional -->
+                <div class="col-md-4">
+                    <div class="card shadow popular text-center text-secondary">
+                        <div class="card-header fs-3">Professional<p class="price">₹ <span style="color: #202942;">49.99
+                                </span><span class="fs-6">/ mo</span></p>
+                        </div>
+                        <div class="card-body">
+
+                            <ul class="list-unstyled text-secondary mb-4">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>HTML5 & CSS3</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Bootstrap v5</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Responsive Layout</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Cross Browser Support</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center text-danger">
+                                    <span>Contact Form</span>
+                                    <span class="text-danger fw-bold fs-4">✖</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-white btn-custom text-white" style="background: #4ac4f3;">Get
+                                Started</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ultimate -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-header fs-3">Ultimate<p class="price">₹ <span style="color: #4ac4f3;">79.99
+                                </span><span class="fs-6"> / mo</span></p>
+                        </div>
+                        <div class="card-body">
+
+                            <ul class="list-unstyled text-secondary mb-4">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>HTML5 & CSS3</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Bootstrap v5</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Responsive Layout</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Cross Browser Support</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center text-danger">
+                                    <span>Contact Form</span>
+                                    <span class="text-danger fw-bold fs-4">✖</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-dark btn-custom" style="background: #202942;">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials text-center" id="testimonials">
+        <div class="container">
+            <h2 class="mb-5">What Users Say</h2>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <p>"Amazing builder, saved me hours!"</p>
+                    <strong>- Developer</strong>
+                </div>
+
+                <div class="col-md-4">
+                    <p>"Clean UI and super fast."</p>
+                    <strong>- Startup Founder</strong>
+                </div>
+
+                <div class="col-md-4">
+                    <p>"Best SaaS tool I've used."</p>
+                    <strong>- Freelancer</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p>© 2026 SaaS Builder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (this.hash !== "") {
+                    e.preventDefault();
+                    document.querySelector(this.hash).scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Testimonials</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<style>
+body {
+    background: #eef3f8;
+    font-family: 'Inter', sans-serif;
+}
+
+/* LEFT PANEL */
+.sidebar {
+    padding: 30px;
+}
+.sidebar h3 {
+    font-weight: 700;
+}
+
+/* CARD */
+.testimonial-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.stars i {
+    color: #f4a100;
+}
+
+.quote {
+    background: #e6f7fd;
+    padding: 10px;
+    border-radius: 10px;
+    color: #4ac4f3;
+}
+
+.testimonial-text {
+    color: #6c757d;
+    margin: 15px 0;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.author img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+/* Swiper */
+.swiper {
+    padding-bottom: 40px;
+}
+
+.swiper-pagination-bullet {
+    background: #ccc;
+}
+.swiper-pagination-bullet-active {
+    background: #4ac4f3;
+}
+</style>
+</head>
+
+<body>
+
+<section class="py-5">
+<div class="container">
+<div class="row align-items-center">
+
+    <!-- LEFT -->
+    <div class="col-lg-4 mb-4" style="background: #e8f1f8;">
+        <div class="sidebar text-center">
+            <h3>What Our Clients Say</h3>
+            <span style="
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 16px;
+                border-radius: 50px;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                background: 
+            color-mix(in srgb, #0ea5e9, transparent 85%);
+                color: var(--accent-color);
+                margin-bottom: 24px;
+                color: #0ea5e9;
+            "><i class="bi bi-heart-fill" style="color: red;"></i>Satisfied Clients
+            </span>
+            <p class="text-secondary small">Real feedback from users building amazing products using our SaaS platform.</p>
+            <button class="btn rounded-pill btn-primary-custom">View All Reviews<i class="bi bi-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- RIGHT SLIDER -->
+    <div class="col-lg-8">
+        <div class="swiper mySwiper">
+
+            <div class="swiper-wrapper">
+
+                <!-- CARD 1 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="card-top">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="quote"><i class="bi bi-quote"></i></div>
+                        </div>
+
+                        <p class="testimonial-text">
+                            Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit.
+                        </p>
+
+                        <div class="author">
+                            <img src="https://i.pravatar.cc/100?img=1">
+                            <div>
+                                <strong>James Mitchell</strong><br>
+                                <small>Product Designer</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="card-top">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="quote"><i class="bi bi-quote"></i></div>
+                        </div>
+
+                        <p class="testimonial-text">
+                            Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit.
+                        </p>
+
+                        <div class="author">
+                            <img src="https://i.pravatar.cc/100?img=5">
+                            <div>
+                                <strong>Olivia Chen</strong><br>
+                                <small>Operations Manager</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="swiper-slide">
+                    <div class="testimonial-card">
+                        <div class="card-top">
+                            <div class="stars">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="quote"><i class="bi bi-quote"></i></div>
+                        </div>
+
+                        <p class="testimonial-text">
+                            Best SaaS tool I've used. Smooth UI and very powerful features.
+                        </p>
+
+                        <div class="author">
+                            <img src="https://i.pravatar.cc/100?img=8">
+                            <div>
+                                <strong>Marcus Webb</strong><br>
+                                <small>Tech Lead</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- DOTS -->
+            <div class="swiper-pagination"></div>
+
+        </div>
+    </div>
+
+</div>
+</div>
+</section>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+<script>
+const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    speed: 800,
+    spaceBetween: 20,
+
+    autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+    },
+
+    slidesPerView: 1,
+
+    breakpoints: {
+        768: {
+            slidesPerView: 2
+        }
+    },
+
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    }
+});
+</script>
+
 </body>
 </html>
+
+
+<!-- CONTACT -->
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Get Started Today</h2>  
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
+        <div class="form-card p-4 shadow-sm bg-white rounded-3">
+          <div class="form-card-header d-flex align-items-center mb-4">
+            <div class="header-icon me-3">
+              <i class="bi bi-send-fill fs-3 p-3 rounded-2 " style="background: color-mix(in srgb, #0ea5e9 12%, transparent); color: #0ea5e9;"></i>
+            </div>
+            <div class="header-text">
+              <h4 class="mb-1">Send Us a Message</h4>
+              <p class="mb-0 text-muted">Fill out the form and our team will respond within 24 hours.</p>
+            </div>
+          </div>
+
+          <form id="leadForm" class="php-email-form">
+            <div class="row g-4">
+              <!-- Name -->
+              <div class="col-md-6">
+                <div class="input-group-custom">
+                  <label>Your Name</label>
+                  <div class="input-wrapper d-flex align-items-center border rounded p-2">
+                    <i class="bi bi-person me-2"></i>
+                    <input type="text" name="name" class="form-control border-0" placeholder="John Doe" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="col-md-6">
+                <div class="input-group-custom">
+                  <label>Email Address</label>
+                  <div class="input-wrapper d-flex align-items-center border rounded p-2">
+                    <i class="bi bi-envelope me-2"></i>
+                    <input type="email" name="email" class="form-control border-0" placeholder="john@example.com" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Subject / Mobile -->
+              <div class="col-12">
+                <div class="input-group-custom">
+                  <label>Subject / Mobile</label>
+                  <div class="input-wrapper d-flex align-items-center border rounded p-2">
+                    <i class="bi bi-chat-square-text me-2"></i>
+                    <input type="text" name="subject" class="form-control border-0" placeholder="How can we help?" required>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Message -->
+              <div class="col-12">
+                <div class="input-group-custom">
+                  <label>Your Message</label>
+                  <div class="input-wrapper textarea-wrapper d-flex align-items-start border rounded p-2">
+                    <i class="bi bi-pencil-square mt-1 me-2"></i>
+                    <textarea name="message" rows="5" class="form-control border-0" placeholder="Tell us about your project..." required></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="col-12 text-center mt-3">
+                <button type="submit" class="btn btn-primary-custom px-4" style="box-shadow: none !important;">Send Message <i class="bi bi-arrow-right-circle-fill"></i></button>
+              </div>
+              <!-- Lock -->
+              <div class="secure-note text-center small text-info text-opacity-50">
+                    <i class="bi bi-lock-fill "></i>
+                    <span>Your data is encrypted and secure</span>
+                </div>
+            </div>
+            <!-- Optional: Add message alerts or loading indicators here -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section id="pricing" class="py-5 text-center">
+<div class="container">
+<h2>Our Plans</h2>
+
+<div class="row mt-4 g-4">
+
+<!-- PLAN 1 -->
+<div class="col-md-6">
+<div class="card plan-card shadow p-4">
+<h3>Static Basic</h3>
+<h2 class="text-primary">₹500 / month</h2>
+<ul class="list-unstyled mt-3">
+<li>✔ 5 Pages Website</li>
+<li>✔ Mobile Responsive</li>
+<li>✔ SEO Ready</li>
+<li>✔ Contact Form</li>
+<li>✔ WhatsApp Integration</li>
+</ul>
+<a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+</div>
+</div>
+
+<!-- PLAN 2 -->
+<div class="col-md-6">
+<div class="card plan-card shadow p-4 border-primary">
+<h3>Custom Ecommerce</h3>
+<h2 class="text-primary">₹2000 / month</h2>
+<ul class="list-unstyled mt-3">
+<li>✔ Full Ecommerce Website</li>
+<li>✔ Product Management</li>
+<li>✔ Payment Integration</li>
+<li>✔ Admin Panel</li>
+<li>✔ Custom Features</li>
+</ul>
+<a href="#contact" class="btn btn-primary mt-3">Start Selling</a>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="pricing" class="py-5 text-center">
+  <div class="container">
+    <h2>Our Plans</h2>
+
+    <!-- First Row -->
+    <div class="row mt-4 g-4">
+      <!-- Box 1 -->
+      <div class="col-md-3">
+        <div class="card plan-card shadow p-4">
+          <h3>Static Basic</h3>
+          <h2 class="text-primary">₹500 / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- <li>✔ 5 Pages Website</li> -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+      <!-- Box 2 -->
+      <div class="col-md-3">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 2</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+      <!-- Box 3 -->
+      <div class="col-md-3">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 3</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+      <!-- Box 4 -->
+      <div class="col-md-3">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 4</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row mt-4 g-4">
+      <!-- Box 5 -->
+      <div class="col-md-3">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 5</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+      <!-- Box 6 -->
+      <div class="col-md-3">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 6</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+      <!-- Box 7 -->
+      <div class="col-md-3">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 7</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+      <!-- Box 8 -->
+      <div class="col-md-3">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 8</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- First Stats Block -->
+<div class="row justify-content-center mt-3 g-3">
+  <!-- Item 1 -->
+  <div class="col-12 col-md-4">
+    <div class="bg-light rounded shadow-sm p-4 text-center">
+      <div class="stat-number fs-3 fw-bold">50+</div>
+      <div class="stat-label">Team Members</div>
+    </div>
+  </div>
+  
+  <!-- Item 2 -->
+  <div class="col-12 col-md-4">
+    <div class="bg-light rounded shadow-sm p-4 text-center">
+      <div class="stat-number fs-3 fw-bold">12</div>
+      <div class="stat-label">Countries</div>
+    </div>
+  </div>
+  
+  <!-- Item 3 -->
+  <div class="col-12 col-md-4">
+    <div class="bg-light rounded shadow-sm p-4 text-center">
+      <div class="stat-number fs-3 fw-bold">8+</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+  </div>
+</div>
+<hr>
+
+
+
+
+<section id="25" class="py-5 text-center">
+  <div class="container">
+    <h2>Example</h2>
+
+    <!-- First Row -->
+    <div class="row mt-4 g-4">
+      <!-- Box 1 -->
+      <div class="col-md-4">
+        <div class="card plan-card shadow p-4">
+          <h3>Static Basic</h3>
+          <h2 class="text-primary">₹500 / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- <li>✔ 5 Pages Website</li> -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+      <!-- Box 2 -->
+      <div class="col-md-4">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 2</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+      <!-- Box 3 -->
+      <div class="col-md-4">
+        <div class="card plan-card shadow p-4">
+          <h3>Plan 3</h3>
+          <h2 class="text-primary">₹XXXX / month</h2>
+          <ul class="list-unstyled mt-3">
+            <!-- features -->
+          </ul>
+          <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+        </div>
+      </div>
+</section> 
+
+
+
+
+
+
+
+
+
+<hr>
+<!-- Second Stats Row with AOS -->
+<div class="stats-row" data-aos="fade-up" data-aos-delay="400">
+  <div class="row g-4 justify-content-center">
+    <div class="col-6 col-md-3 text-center">
+      <div class="stat-item p-3 bg-white rounded shadow-sm">
+        <div class="stat-number fs-4 fw-bold">250+</div>
+        <div class="stat-label">Projects Delivered</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 text-center">
+      <div class="stat-item p-3 bg-white rounded shadow-sm">
+        <div class="stat-number fs-4 fw-bold">98%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 text-center">
+      <div class="stat-item p-3 bg-white rounded shadow-sm">
+        <div class="stat-number fs-4 fw-bold">15+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 text-center">
+      <div class="stat-item p-3 bg-white rounded shadow-sm">
+        <div class="stat-number fs-4 fw-bold">40+</div>
+        <div class="stat-label">Team Experts</div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
