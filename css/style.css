@@ -40,7 +40,8 @@ img:hover {
    NAVBAR
 ========================= */
   .offcanvas {
-    background-color: #111;
+    background-color:#023b6d;
+    /* background-color: #111; */
     /* background: #09101f; */
     /* background: linear-gradient(360deg, #2c0a0f, #6e1b25);
   /*change X btn-close bg-warning to btn-close bg-danger in html */
@@ -59,7 +60,8 @@ img:hover {
     /* background: linear-gradient(90deg, #5a0f1c, #8b1e2d); */
     /*  background: linear-gradient(90deg, #2c0a0f, #6e1b25); */
     /* background: #09101f; */
-    background: #1da3a6;
+    /* background: #1da3a6; */
+        background: #023b6d;
 }
 
 /* BRAND */
@@ -340,7 +342,7 @@ footer a:hover {
 }
 
 .rate-bar {
-background: #ffd700; */
+   /*background: #ffd700; */
     /* color: #000; */
     /* font-weight: 600; */
     position: relative;
