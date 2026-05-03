@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
     <!-- <link href="http://localhost:8080/style1.css" rel="stylesheet"> -->
-    <!-- <link href="https://cdn.jsdelivr.net/gh/chentamil/sdjewellers@main/style.css" rel="stylesheet"> -->
+    <!-- <link href="https://cdn.jsdelivr.net/gh/chentamil/jothihsclinic@main/style.css" rel="stylesheet"> -->
     <link href="http://localhost:8080/css/style.css" rel="stylesheet">
 
     <!-- Favicon -->
@@ -394,16 +394,744 @@
 }
 </style>
     <!-- ABOUT -->
-    <section id="about" class="text-center" style="background: #1da3a6d1;color: #fff;">
+    <style>
+
+
+
+
+        /* Buttons */
+        .btn-custom {
+            border-radius: 50px;
+            padding: 10px 25px;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing .card-header {
+            background: #202942;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Highlight middle plan */
+        /* .popular {
+    background: linear-gradient(135deg, #0d6efd, #4cc9f0);
+    color: white;
+    background: linear-gradient(135deg, #4ac4f3, #202942);
+    background: linear-gradient(135deg, #4ac4f3, #1aa0d8); 
+} */
+        .popular .card-header {
+            /* background: #4ac4f3; */
+            background: linear-gradient(135deg, #4ac4f3, #0ff0fc);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+        }
+
+        .feature-box {
+            padding: 20px;
+            border-radius: 10px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .feature-box-dark {
+            padding: 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+            background: linear-gradient(135deg, #007CC1 0%, #07488E 100%);
+            color: #fff;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #fff;
+            padding: 80px 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0d1b2a;
+            color: white;
+            padding: 40px 0;
+        }
+
+        /* Mail Us Button in Nav Bar */
+        .btn-custom {
+            position: relative;
+            /* Needed for pseudo-element positioning */
+            border-radius: 50px;
+            padding: 10px 25px;
+            background: #00a6eb;
+            color: #fff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            /* To contain the pseudo-element */
+        }
+
+        /* Hover effect with diagonal flash */
+        .btn-custom:hover::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            /* Start off-screen on the left */
+            width: 200%;
+            /* Make it wide enough to cover the button diagonally */
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            transform: skewX(-20deg);
+            /* Skew to create diagonal effect */
+            animation: flashDiagonal 0.6s forwards;
+            pointer-events: none;
+            /* So it doesn't block interactions */
+        }
+
+        /* Keyframes for the diagonal flash animation */
+        @keyframes flashDiagonal {
+            from {
+                left: -100%;
+            }
+
+            to {
+                left: 100%;
+            }
+        }
+
+        /* Optional: keep background on hover as you had before */
+        .btn-custom:hover {
+            background: #4ac4f3;
+            border: 1px solid #fff;
+        }
+
+        /* Custom blue primary Btn */
+        .btn-primary-custom {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 14px 32px !important;
+            border-radius: 50px !important;
+            background: #0ea5e9 !important;
+            color: #fff !important;
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            box-shadow: 0 8px 24px color-mix(in srgb, #0ea5e9, transparent 60%) !important;
+        }
+
+        /* h2 after underline */
+        h2:after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #0ea5e9;
+            margin-top: 8px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <!-- ABOUT -->
+    <section id="about" class="py-5 text-center">
         <div class="container">
-            <h2>Jothi Heart & Skin Clinic</h2>
-            <p>Kanchipuram · Tamil Nadu</p>
+            <h2>About MahaRaja Retail</h2>
             <p class="lead">
-            Expert cardiac care and advanced dermatology & aesthetics under one roof.
-            Led by specialist doctors serving Kanchipuram.
+                We provide modern, fast, and SEO-optimized websites for businesses at very low monthly cost.
+            </p>
+            <p>
+                SSL • CDN • Mobile Responsive • SEO Ready • Contact Forms • WhatsApp Integration
             </p>
         </div>
     </section>
+
+    <!--  -->
+    <section class="container my-5">
+        <div class="row align-items-center gy-4">
+
+            <!-- Image Section -->
+            <div class="col-12 col-lg-6">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" class="img-fluid rounded mb-3"
+                    alt="Main Image">
+
+            </div>
+
+            <!-- Content Section -->
+            <div class="col-12 col-lg-6">
+
+                <p class="fw-semibold mb-2" style="color: #0ea5e9;font-size: 1.2rem;">Who We Are</p>
+
+                <style>
+                    .clr-blue {
+                        color: #0ea5e9;
+                    }
+
+                    .bg-blue {
+                        background: #0ea5e9 !important;
+                    }
+                </style>
+
+
+                <h2 class="fw-bold">
+                    Innovating for Your Success Through Technology
+                </h2>
+
+                <p class="lead">
+                    Voluptatem accusantium doloremque laudantium, totam rem aperiam.
+                </p>
+
+                <p class="text-muted">
+                    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+                </p>
+
+                <!-- Features -->
+                <div class="row row-cols-2 g-2 mt-3">
+                    <div class="col">
+                        <div class="bg-light p-2 rounded">
+                            <i class="bi bi-check-circle-fill me-1 clr-blue"></i> Fast Delivery
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-light p-2 rounded">
+                            <i class="bi bi-check-circle-fill me-1 clr-blue"></i> Quality Assured
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-light p-2 rounded">
+                            <i class="bi bi-check-circle-fill me-1 clr-blue"></i> Expert Team
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-light p-2 rounded">
+                            <i class="bi bi-check-circle-fill me-1 clr-blue"></i> 24/7 Support
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="row text-center mt-4">
+                    <div class="col">
+                        <h5 class="fw-bold mb-0 clr-blue fs-3">150</h5>
+                        <small class="text-muted">Projects</small>
+                    </div>
+                    <div class="col">
+                        <h5 class="fw-bold mb-0 clr-blue fs-3">85</h5>
+                        <small class="text-muted">Clients</small>
+                    </div>
+                    <div class="col">
+                        <h5 class="fw-bold mb-0 clr-blue fs-3">95%</h5>
+                        <small class="text-muted">Retention</small>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="mt-4 d-flex flex-wrap align-items-center gap-3">
+                    <a href="#" class="btn btn-primary text-white bg-blue">
+                        Discover More <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                    <div class="d-flex align-items-center">
+                        <i class="bi bi-telephone-fill me-2"></i>
+                        <div>
+                            <small class="d-block">Call Us</small>
+                            <a href="tel:+917373020972">+91-73730-20972</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+<!-- Your Section -->
+<section id="whatweoffer" class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="mb-4 fw-bold text-uppercase text-center">What We Offer</h2>
+    <div class="row gy-4">
+      <!-- Service 1 -->
+      <div class="col-md-4 d-flex justify-content-center">
+        <div class="service-card text-start w-100">
+          <h5 class="mb-3"><i class="bi bi-file-earmark-text me-2"></i>Static Websites</h5>
+          <p>Fast, secure, SEO-friendly websites for small businesses.</p>
+        </div>
+      </div>
+      <!-- Service 2 -->
+      <div class="col-md-4 d-flex justify-content-center">
+        <div class="service-card text-start w-100">
+          <h5 class="mb-3"><i class="bi bi-cart4 me-2"></i>Custom Ecommerce</h5>
+          <p>Fully functional ecommerce websites with custom features.</p>
+        </div>
+      </div>
+      <!-- Service 3 -->
+      <div class="col-md-4 d-flex justify-content-center">
+        <div class="service-card text-start w-100">
+          <h5 class="mb-3"><i class="bi bi-hdd-network me-2"></i>All-in-One Setup</h5>
+          <p>Hosting, SSL, CDN, and support included.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <style>
+    /* Minimal Custom Styles for Elegance */
+    #services {
+      background-color: #f8f9fa; /* Light background for elegance */
+    }
+
+    #services h2 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #343a40;
+    }
+
+    /* Service Card Styles */
+    .service-card {
+      background: #ffffff;
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-card h5 {
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.25rem;
+      color: #212529;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: #6c757d;
+      line-height: 1.5;
+    }
+
+    /* Responsive adjustment */
+    @media(max-width: 767.98px){
+      #services h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+
+
+    <section id="hero-2" class="py-5">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+
+                <!-- LEFT CONTENT -->
+                <div class="col-lg-6">
+
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="bg-primary rounded-circle me-2" style="width:10px;height:10px;"></span>
+                        <span class="fw-semibold">Premium Digital Solutions</span>
+                    </div>
+
+                    <h1 class="mb-4">Crafting Exceptional Digital Experiences</h1>
+
+                    <p class="mb-4">
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                        Vestibulum tortor quam, feugiat vitae ultricies eget.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#services" class="btn btn-primary">
+                            Explore Services <i class="bi bi-arrow-right ms-1"></i>
+                        </a>
+
+                        <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" target="_blank"
+                            class="btn btn-outline-primary">
+                            <i class="bi bi-play-circle me-1"></i> Watch Video
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT CARDS -->
+                <div class="col-lg-6">
+                    <div class="row g-3">
+
+                        <!-- Card 1 -->
+                        <div class="col-12 col-sm-6">
+                            <div class="card text-center shadow-sm p-3 h-100">
+                                <div class="card-body">
+                                    <div class="text-primary fs-3 mb-2">
+                                        <i class="bi bi-rocket-takeoff"></i>
+                                    </div>
+                                    <h5 class="mb-1">150+</h5>
+                                    <p class="mb-0">Projects Launched</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="col-12 col-sm-6">
+                            <div class="card text-center shadow-sm p-3 h-100">
+                                <div class="card-body">
+                                    <div class="text-primary fs-3 mb-2">
+                                        <i class="bi bi-heart"></i>
+                                    </div>
+                                    <h5 class="mb-1">98%</h5>
+                                    <p class="mb-0">Client Satisfaction</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="col-12 col-sm-6">
+                            <div class="card text-center shadow-sm p-3 h-100">
+                                <div class="card-body">
+                                    <div class="text-primary fs-3 mb-2">
+                                        <i class="bi bi-lightbulb"></i>
+                                    </div>
+                                    <h5 class="mb-1">12+</h5>
+                                    <p class="mb-0">Years Experience</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="col-12 col-sm-6">
+                            <div class="card text-center shadow-sm p-3 bg-primary text-white h-100">
+                                <div class="card-body">
+                                    <div class="fs-3 mb-2">
+                                        <i class="bi bi-briefcase"></i>
+                                    </div>
+                                    <h5 class="mb-1">40+</h5>
+                                    <p class="mb-0">Team Experts</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <h2>Powerful Features</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="feature-box shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/pen-tool.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;background: linear-gradient(135deg, #007CC1 0%, #07488E 100%);"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Responsive Design</h5>
+                        <p>Works perfectly on all devices.Your website may well be a customer’s first impression of your
+                            business.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box-dark shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/business.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Digital Marketing</h5>
+                        <p>Create and manage top-performing social campaigns and start developing a dedicated customer
+                            fan base.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/seo.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;background: linear-gradient(135deg, #007CC1 0%, #07488E 100%);"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Fast Hosting</h5>
+                        <p>Lightning-fast performance worldwide.Outrank your competitor and stay at the top of Google
+                            with our targeted, affordable with our strategy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-2">
+
+                <div class="col-md-4">
+                    <div class="feature-box-dark shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/e-commerce-solution.png"
+                            alt="" style="max-width: 70px; height: auto; display: block; margin: 0 auto;"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>E-Commerce Solutions</h5>
+                        <p>E-Commerce is the fastest-growing retail market in India. You need to stand out from the
+                            crowd in order to thrive.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/website.png" alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;background: linear-gradient(135deg, #007CC1 0%, #07488E 100%);"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Web Application</h5>
+                        <p>Experts in Dynamic Web design and Development and Custom Web Web Applications in various
+                            plotforms.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="feature-box-dark shadow-sm">
+                        <img loading="lazy" decoding="async"
+                            src="https://clemencewebsolutions.com/wp-content/uploads/2024/11/clean-computer-virus-1.png"
+                            alt=""
+                            style="max-width: 70px; height: auto; display: block; margin: 0 auto;background: #fff;"
+                            class="rounded mx-auto d-block mb-3" />
+                        <h5>Security</h5>
+                        <p>Start your journey towards success with professionally designed and Secured Https website.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: #202942;">Pricing Plans</h2>
+                <p class="text-muted">We provide modern, fast, and SEO-optimized websites.</p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Standard -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-header fs-3">Standard<p class="price">₹ <span style="color: #4ac4f3;">29.99
+                                </span><span class="fs-6"> / mo</span></p>
+                        </div>
+                        <div class="card-body">
+
+                            <ul class="list-unstyled text-secondary mb-4">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>HTML5 & CSS3</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Bootstrap v5</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Responsive Layout</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Cross Browser Support</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center text-danger">
+                                    <span>Contact Form</span>
+                                    <span class="text-danger fw-bold fs-4">✖</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-dark btn-custom" style="background: #202942;">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional -->
+                <div class="col-md-4">
+                    <div class="card shadow popular text-center text-secondary">
+                        <div class="card-header fs-3">Professional<p class="price">₹ <span style="color: #202942;">49.99
+                                </span><span class="fs-6">/ mo</span></p>
+                        </div>
+                        <div class="card-body">
+
+                            <ul class="list-unstyled text-secondary mb-4">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>HTML5 & CSS3</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Bootstrap v5</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Responsive Layout</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Cross Browser Support</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center text-danger">
+                                    <span>Contact Form</span>
+                                    <span class="text-danger fw-bold fs-4">✖</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-white btn-custom text-white" style="background: #4ac4f3;">Get
+                                Started</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ultimate -->
+                <div class="col-md-4">
+                    <div class="card shadow-sm text-center">
+                        <div class="card-header fs-3">Ultimate<p class="price">₹ <span style="color: #4ac4f3;">79.99
+                                </span><span class="fs-6"> / mo</span></p>
+                        </div>
+                        <div class="card-body">
+
+                            <ul class="list-unstyled text-secondary mb-4">
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>HTML5 & CSS3</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Bootstrap v5</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Responsive Layout</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center">
+                                    <span>Cross Browser Support</span>
+                                    <span class="text-success fw-bold fs-4">✔</span>
+                                </li>
+                                <li class="d-flex justify-content-between align-items-center text-danger">
+                                    <span>Contact Form</span>
+                                    <span class="text-danger fw-bold fs-4">✖</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-dark btn-custom" style="background: #202942;">Get Started</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+   <!-- Testimonials Section -->
+<section class="testimonials text-center" id="testimonials">
+  <div class="container">
+    <h2 class="mb-5 text-uppercase fw-bold text-center">What Users Say</h2>
+    <div class="row g-4">
+      <div class="col-md-4 d-flex align-items-stretch">
+        <div class="testimonial w-100">
+          <p>"Amazing builder, saved me hours!"</p>
+          <strong>- Developer</strong>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex align-items-stretch">
+        <div class="testimonial w-100">
+          <p>"Clean UI and super fast."</p>
+          <strong>- Startup Founder</strong>
+        </div>
+      </div>
+      <div class="col-md-4 d-flex align-items-stretch">
+        <div class="testimonial w-100">
+          <p>"Best SaaS tool I've used."</p>
+          <strong>- Freelancer</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <style>
+    /* Custom Styles for Testimonials */
+    #testimonials {
+      background-color: #f8f9fa; /* Light background */
+      padding: 60px 20px;
+    }
+
+    #testimonials h2 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #343a40;
+      margin-bottom: 40px;
+    }
+
+    /* Style for each testimonial */
+    .testimonial {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .testimonial p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #495057;
+      margin-bottom: 20px;
+    }
+
+    .testimonial strong {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #212529;
+      align-self: flex-end;
+    }
+
+    /* Responsive adjustments */
+    @media(max-width: 767.98px){
+      #testimonials h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+
 <!-- STATS -->
 <section class="py-5 bg-light text-center">
 <div class="container">
@@ -465,110 +1193,248 @@
             </div>
         </div>
     </section>
-<!-- TREATMENTS GRID -->
-<section id="treatments" class="py-5" style="background: #cff4fc;">
-<div class="container text-center">
+        <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    
+    <style>
+        body {
+            background: #eef3f8;
+            font-family: 'Inter', sans-serif;
+        }
 
-<h2>All Treatments</h2>
-<p>Comprehensive care, every visit.</p>
+        /* LEFT PANEL */
+        .sidebar {
+            padding: 30px;
+        }
 
-<div class="row g-4">
+        .sidebar h3 {
+            font-weight: 700;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/cardiology-consultation" class="text-decoration-none text-black">
-    <div class="card p-3">Cardiology Consultation</div>
-  </a>
-</div>
+        /* CARD */
+        .testimonial-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 20px;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
 
-<div class="col-md-3">
-  <a href="/pages/ecg" class="text-decoration-none text-black">
-    <div class="card p-3">ECG</div>
-  </a>
-</div>
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/echocardiogram" class="text-decoration-none text-black">
-    <div class="card p-3">ECHO</div>
-  </a>
-</div>
+        .stars i {
+            color: #f4a100;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/treadmill-test" class="text-decoration-none text-black">
-    <div class="card p-3">TMT Stress Test</div>
-  </a>
-</div>
+        .quote {
+            background: #e6f7fd;
+            padding: 10px;
+            border-radius: 10px;
+            color: #4ac4f3;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/holter-monitoring" class="text-decoration-none text-black">
-    <div class="card p-3">Holter Monitoring</div>
-  </a>
-</div>
+        .testimonial-text {
+            color: #6c757d;
+            margin: 15px 0;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/coronary-angioplasty" class="text-decoration-none text-black">
-    <div class="card p-3">Angioplasty</div>
-  </a>
-</div>
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/laser-hair-removal" class="text-decoration-none text-black">
-    <div class="card p-3">Laser Hair Removal</div>
-  </a>
-</div>
+        .author img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/prp-hair-treatment" class="text-decoration-none text-black">
-    <div class="card p-3">PRP & GFC</div>
-  </a>
-</div>
+        /* Swiper */
+        .swiper {
+            padding-bottom: 40px;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/hydrafacial" class="text-decoration-none text-black">
-    <div class="card p-3">HydraFacial</div>
-  </a>
-</div>
+        .swiper-pagination-bullet {
+            background: #ccc;
+        }
 
-<div class="col-md-3">
-  <a href="/pages/pico-laser-carbon-peel" class="text-decoration-none text-black">
-    <div class="card p-3">Pico Laser</div>
-  </a>
-</div>
+        .swiper-pagination-bullet-active {
+            background: #4ac4f3;
+        }
+    </style>
+</head>
 
-<div class="col-md-3">
-  <a href="/pages/microneedling" class="text-decoration-none text-black">
-    <div class="card p-3">Microneedling</div>
-  </a>
-</div>
+<body>
 
-<div class="col-md-3">
-  <a href="/pages/chemical-peeling" class="text-decoration-none text-black">
-    <div class="card p-3">Chemical Peel</div>
-  </a>
-</div>
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
 
-<div class="col-md-3">
-  <a href="/pages/tattoo-mole-removal" class="text-decoration-none text-black">
-    <div class="card p-3">Tattoo Removal</div>
-  </a>
-</div>
+                <!-- LEFT -->
+                <div class="col-lg-4 mb-4" style="background: #e8f1f8;">
+                    <div class="sidebar text-center">
+                        <h3>What Our Clients Say</h3>
+                        <span style="
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 16px;
+                border-radius: 50px;
+                font-size: 13px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                background: 
+            color-mix(in srgb, #0ea5e9, transparent 85%);
+                color: var(--accent-color);
+                margin-bottom: 24px;
+                color: #0ea5e9;
+            "><i class="bi bi-heart-fill" style="color: red;"></i>Satisfied Clients
+                        </span>
+                        <p class="text-secondary small">Real feedback from users building amazing products using our
+                            SaaS platform.</p>
+                        <button class="btn rounded-pill btn-primary-custom">View All Reviews<i
+                                class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
 
-<div class="col-md-3">
-  <a href="/pages/acne-treatment" class="text-decoration-none text-black">
-    <div class="card p-3">Acne Treatment</div>
-  </a>
-</div>
+                <!-- RIGHT SLIDER -->
+                <div class="col-lg-8">
+                    <div class="swiper mySwiper">
 
-</div>
-</div>
-</section>
+                        <div class="swiper-wrapper">
 
-<style>
-  .card:hover {
-  transform: scale(1.03);
-  transition: 0.2s;
-  cursor: pointer;
-}
-</style>
+                            <!-- CARD 1 -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+                                    <div class="card-top">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                        <div class="quote"><i class="bi bi-quote"></i></div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit.
+                                    </p>
+
+                                    <div class="author">
+                                        <img src="https://i.pravatar.cc/100?img=1">
+                                        <div>
+                                            <strong>James Mitchell</strong><br>
+                                            <small>Product Designer</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD 2 -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+                                    <div class="card-top">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                        <div class="quote"><i class="bi bi-quote"></i></div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        Ut enim ad minima veniam quis nostrum exercitationem ullam corporis suscipit.
+                                    </p>
+
+                                    <div class="author">
+                                        <img src="https://i.pravatar.cc/100?img=5">
+                                        <div>
+                                            <strong>Olivia Chen</strong><br>
+                                            <small>Operations Manager</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD 3 -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-card">
+                                    <div class="card-top">
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                        <div class="quote"><i class="bi bi-quote"></i></div>
+                                    </div>
+
+                                    <p class="testimonial-text">
+                                        Best SaaS tool I've used. Smooth UI and very powerful features.
+                                    </p>
+
+                                    <div class="author">
+                                        <img src="https://i.pravatar.cc/100?img=8">
+                                        <div>
+                                            <strong>Marcus Webb</strong><br>
+                                            <small>Tech Lead</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- DOTS -->
+                        <div class="swiper-pagination"></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            speed: 800,
+            spaceBetween: 20,
+
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+
+            slidesPerView: 1,
+
+            breakpoints: {
+                768: {
+                    slidesPerView: 2
+                }
+            },
+
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            }
+        });
+    </script>
 <!-- DOCTORS -->
 <section id="doctors" class="doctor-section py-5">
   <div class="container">
@@ -773,29 +1639,286 @@
     </div>
   </div>
 </section>
+<section id="pricing" class="py-5 text-center">
+    <div class="container">
+        <h2>Our Plans</h2>
 
+        <div class="row mt-4 g-4">
 
-    <!-- CONTACT -->
-    <section id="contact" class="text-center border border-warning border-2 rounded-3 m-4">
-        <div class="container">
-            <h2>Visit Us</h2>
-            <h3><strong> Maharaja Retail </strong></h3>
-            <p><a href="https://www.google.com/maps/dir/12.8442384,79.706331/Achabazaar,+109,+Ekambaranathar+Sannathi+St,+Kanchipuram,+Tamil+Nadu+631502/@12.8415729,79.6973181" target="_blank" class="text-decoration-none">
-                <p class="mb-0"><i class="bi bi-geo-alt me-2"></i>No. 109, Ekambaranathar Sannathi Street,Opp. to Narayanaguru School, Kanchipuram, TN 631502.
-                <br><small>Get Directions</small><i class="bi bi-box-arrow-up-right ms-1"></i></p>  
-            </a></p>
-            
-            <p><strong>GSTIN:</strong> 33BBGPM1180B1Z8</p>
-            <p><strong>Since:</strong> 2022</p>
-            <p><i class="bi bi-telephone"></i><strong>Mobile :</strong> <a href="tel:+917373020972" class="ms-2 text-decoration-none">+917373020972</a></p>
-            <p><i class="bi bi-phone-flip"></i><strong>Phone :</strong> <a href="tel:04448035707" class="ms-2 text-decoration-none">04448035707</a></p>
+            <!-- PLAN 1 -->
+            <div class="col-md-6">
+                <div class="card plan-card shadow p-4">
+                    <h3>Static Basic</h3>
+                    <h2 class="text-primary">₹500 / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <li>✔ 5 Pages Website</li>
+                        <li>✔ Mobile Responsive</li>
+                        <li>✔ SEO Ready</li>
+                        <li>✔ Contact Form</li>
+                        <li>✔ WhatsApp Integration</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
 
-            <p><strong>Working Hours:</strong><br>
-            Mon–Sat: 9:30 am – 5:30 pm<br>
-            Sunday: Holiday</p>
+            <!-- PLAN 2 -->
+            <div class="col-md-6">
+                <div class="card plan-card shadow p-4 border-primary">
+                    <h3>Custom Ecommerce</h3>
+                    <h2 class="text-primary">₹2000 / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <li>✔ Full Ecommerce Website</li>
+                        <li>✔ Product Management</li>
+                        <li>✔ Payment Integration</li>
+                        <li>✔ Admin Panel</li>
+                        <li>✔ Custom Features</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Start Selling</a>
+                </div>
+            </div>
 
         </div>
-    </section>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="pricing" class="py-5 text-center">
+    <div class="container">
+        <h2>Our Plans</h2>
+
+        <!-- First Row -->
+        <div class="row mt-4 g-4">
+            <!-- Box 1 -->
+            <div class="col-md-3">
+                <div class="card plan-card shadow p-4">
+                    <h3>Static Basic</h3>
+                    <h2 class="text-primary">₹500 / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- <li>✔ 5 Pages Website</li> -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+            <!-- Box 2 -->
+            <div class="col-md-3">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 2</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+            <!-- Box 3 -->
+            <div class="col-md-3">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 3</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+            <!-- Box 4 -->
+            <div class="col-md-3">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 4</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Row -->
+        <div class="row mt-4 g-4">
+            <!-- Box 5 -->
+            <div class="col-md-3">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 5</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+            <!-- Box 6 -->
+            <div class="col-md-3">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 6</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+            <!-- Box 7 -->
+            <div class="col-md-3">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 7</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+            <!-- Box 8 -->
+            <div class="col-md-3">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 8</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- First Stats Block -->
+<div class="row justify-content-center mt-3 g-3">
+    <!-- Item 1 -->
+    <div class="col-12 col-md-4">
+        <div class="bg-light rounded shadow-sm p-4 text-center">
+            <div class="stat-number fs-3 fw-bold">50+</div>
+            <div class="stat-label">Team Members</div>
+        </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="col-12 col-md-4">
+        <div class="bg-light rounded shadow-sm p-4 text-center">
+            <div class="stat-number fs-3 fw-bold">12</div>
+            <div class="stat-label">Countries</div>
+        </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="col-12 col-md-4">
+        <div class="bg-light rounded shadow-sm p-4 text-center">
+            <div class="stat-number fs-3 fw-bold">8+</div>
+            <div class="stat-label">Years Experience</div>
+        </div>
+    </div>
+</div>
+<hr>
+
+
+
+
+<section id="25" class="py-5 text-center">
+    <div class="container">
+        <h2>Example</h2>
+
+        <!-- First Row -->
+        <div class="row mt-4 g-4">
+            <!-- Box 1 -->
+            <div class="col-md-4">
+                <div class="card plan-card shadow p-4">
+                    <h3>Static Basic</h3>
+                    <h2 class="text-primary">₹500 / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- <li>✔ 5 Pages Website</li> -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+            <!-- Box 2 -->
+            <div class="col-md-4">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 2</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+            <!-- Box 3 -->
+            <div class="col-md-4">
+                <div class="card plan-card shadow p-4">
+                    <h3>Plan 3</h3>
+                    <h2 class="text-primary">₹XXXX / month</h2>
+                    <ul class="list-unstyled mt-3">
+                        <!-- features -->
+                    </ul>
+                    <a href="#contact" class="btn btn-primary mt-3">Get Started</a>
+                </div>
+            </div>
+</section>
+
+
+
+
+
+
+
+
+
+<hr>
+<!-- Second Stats Row with AOS -->
+<div class="stats-row" data-aos="fade-up" data-aos-delay="400">
+    <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-3 text-center">
+            <div class="stat-item p-3 bg-white rounded shadow-sm">
+                <div class="stat-number fs-4 fw-bold">250+</div>
+                <div class="stat-label">Projects Delivered</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 text-center">
+            <div class="stat-item p-3 bg-white rounded shadow-sm">
+                <div class="stat-number fs-4 fw-bold">98%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 text-center">
+            <div class="stat-item p-3 bg-white rounded shadow-sm">
+                <div class="stat-number fs-4 fw-bold">15+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 text-center">
+            <div class="stat-item p-3 bg-white rounded shadow-sm">
+                <div class="stat-number fs-4 fw-bold">40+</div>
+                <div class="stat-label">Team Experts</div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
     <!-- google map -->
     <section class="py-5 bg-light text-center">
         <div class="container">
