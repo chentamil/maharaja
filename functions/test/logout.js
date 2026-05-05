@@ -1,5 +1,5 @@
+// Logout function
 export async function onRequest(context) {
-  const url = new URL(context.request.url);
   return new Response(null, {
     status: 302,
     headers: {

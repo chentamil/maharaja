@@ -4,14 +4,10 @@ export async function onRequest(context) {
   const url = new URL(request.url);
 
   // Protect only /test/*
-  if (!url.pathname.startsWith("/test/")) {
-    return context.next();
-  }
+  if (!url.pathname.startsWith("/test/")) return context.next();
 
   // Allow login page
-  if (url.pathname === "/test/login") {
-    return context.next();
-  }
+  if (url.pathname === "/test/login") return context.next();
 
   // Check cookie
   const cookie = request.headers.get("Cookie") || "";
@@ -22,11 +18,16 @@ export async function onRequest(context) {
   }
 
   try {
-    const data = JSON.parse(atob(match[1]));
-    const hmac = match[1].split(".")[1]; // verify signature
-    if (!verifyHMAC(JSON.stringify(data), hmac)) throw "invalid signature";
+    const token = match[1];
+    const [payloadB64, sig] = token.split(".");
+    const payload = JSON.parse(atob(payloadB64));
 
-    if (Date.now() > data.exp) throw "expired";
+    // Verify HMAC signature
+    const valid = await verifyHMAC(payloadB64, sig);
+    if (!valid) throw "invalid signature";
+
+    // Check expiration
+    if (Date.now() > payload.exp) throw "expired";
 
     return context.next();
   } catch {
@@ -34,12 +35,18 @@ export async function onRequest(context) {
   }
 }
 
-// Simple HMAC verification
-function verifyHMAC(payload, sig) {
+// Verify HMAC signature using Web Crypto API
+async function verifyHMAC(payload, sig) {
   const secret = "sdj@2026!secureKeyfx7YFWyKfH"; // change to strong random string
-  const hash = crypto.subtle
-    ? crypto.subtle
-    : require("crypto"); // fallback for Node if needed
-  // For Cloudflare Workers, we'll use simple match (see login.js for signing)
-  return true; // dummy for demo, handled in login.js
+  const key = await crypto.subtle.importKey(
+    "raw",
+    new TextEncoder().encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["verify"]
+  );
+
+  const decodedSig = Uint8Array.from(atob(sig), c => c.charCodeAt(0));
+  const data = new TextEncoder().encode(payload);
+  return crypto.subtle.verify("HMAC", key, decodedSig, data);
 }
