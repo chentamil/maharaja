@@ -22,7 +22,6 @@
   <h2 class="mb-4">Product Dashboard</h2>
 
 <button class="btn btn-primary mb-3" onclick="openForm()">+ Add Product</button>
-<button class="btn btn-success mb-3" onclick="saveAll()"> 💾 Save All Changes </button>
 
   <table class="table table-bordered bg-white">
     <thead>
@@ -103,20 +102,11 @@
 <script>
 let products = [];
 
-// 🔹 LOAD DATA
+// 🔹 LOAD DATA (replace with /api/products later)
 async function loadData() {
-  try {
-    const res = await fetch("/api/products");
-
-    if (!res.ok) throw new Error("Failed to load products");
-
-    products = await res.json();
-    renderTable();
-
-  } catch (err) {
-    console.error(err);
-    alert("Failed to load products");
-  }
+  const res = await fetch("https://script.googleusercontent.com/macros/echo?user_content_key=AUk");
+  products = await res.json();
+  renderTable();
 }
 
 // 🔹 RENDER TABLE
@@ -127,11 +117,11 @@ function renderTable() {
   products.forEach((p, i) => {
     tbody.innerHTML += `
       <tr>
-        <td>${p.name || ""}</td>
-        <td>${p.price || ""}</td>
-        <td><img src="${p.image1 || ""}"></td>
-        <td>${p.category || ""}</td>
-        <td>${p.code || ""}</td>
+        <td>${p.name}</td>
+        <td>${p.price}</td>
+        <td><img src="${p.image1}"></td>
+        <td>${p.category}</td>
+        <td>${p.code}</td>
         <td>
           <button class="btn btn-sm btn-warning" onclick="editProduct(${i})">Edit</button>
           <button class="btn btn-sm btn-danger" onclick="deleteProduct(${i})">Delete</button>
@@ -141,36 +131,28 @@ function renderTable() {
   });
 }
 
-// 🔹 OPEN FORM (ADD NEW)
+// 🔹 OPEN FORM
 function openForm() {
   document.getElementById("index").value = "";
-
-  document
-    .querySelectorAll("#productModal input, #productModal textarea")
-    .forEach(e => e.value = "");
-
-  new bootstrap.Modal(
-    document.getElementById("productModal")
-  ).show();
+  document.querySelectorAll("#productModal input, #productModal textarea").forEach(e => e.value = "");
+  new bootstrap.Modal(document.getElementById("productModal")).show();
 }
 
-// 🔹 EDIT PRODUCT
+// 🔹 EDIT
 function editProduct(i) {
   const p = products[i];
-
   document.getElementById("index").value = i;
 
   for (let key in p) {
-    const el = document.getElementById(key);
-    if (el) el.value = p[key];
+    if (document.getElementById(key)) {
+      document.getElementById(key).value = p[key];
+    }
   }
 
-  new bootstrap.Modal(
-    document.getElementById("productModal")
-  ).show();
+  new bootstrap.Modal(document.getElementById("productModal")).show();
 }
 
-// 🔹 SAVE PRODUCT (LOCAL ONLY - NO API CALL)
+// 🔹 SAVE
 function saveProduct() {
   const i = document.getElementById("index").value;
 
@@ -194,46 +176,30 @@ function saveProduct() {
   }
 
   renderTable();
-
-  bootstrap.Modal
-    .getInstance(document.getElementById("productModal"))
-    .hide();
+  sendToServer();
+  bootstrap.Modal.getInstance(document.getElementById("productModal")).hide();
 }
 
-// 🔹 DELETE PRODUCT (LOCAL ONLY - NO API CALL)
+// 🔹 DELETE
 function deleteProduct(i) {
   if (confirm("Delete this product?")) {
     products.splice(i, 1);
     renderTable();
+    sendToServer();
   }
 }
 
-// 🔹 SAVE ALL CHANGES (ONE COMMIT ONLY)
-async function saveAll() {
-  try {
-    const res = await fetch("/api/products", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ products })
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      alert("Saved successfully!");
-    } else {
-      alert("Save failed");
-    }
-
-  } catch (err) {
-    console.error(err);
-    alert("Error saving data");
-  }
+// 🔹 SEND TO YOUR API (IMPORTANT)
+async function sendToServer() {
+  await fetch("/api/products", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ products })
+  });
 }
 
-// 🔹 INITIAL LOAD
 loadData();
 </script>
 
