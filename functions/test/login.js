@@ -56,7 +56,7 @@ export async function onRequestPost(context) {
     status: 302,
     headers: {
       "Set-Cookie": `auth=${token}; HttpOnly; Secure; Path=/test; SameSite=Strict`,
-      "Location": "/test/ka/kabill" // redirect after login
+      "Location": "/test/ka" // redirect after login
     }
   });
 }
