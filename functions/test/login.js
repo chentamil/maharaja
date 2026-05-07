@@ -55,7 +55,9 @@ export async function onRequestPost(context) {
   return new Response(null, {
     status: 302,
     headers: {
-      "Set-Cookie": `auth=${token}; HttpOnly; Secure; Path=/test; SameSite=Strict`,
+    //   "Set-Cookie": `auth=${token}; HttpOnly; Secure; Path=/test; SameSite=Strict`,
+    // Path=/test; to  Path=/; Now cookie works for:/test/* /api/*dashboard page can access API
+      "Set-Cookie": `auth=${token}; HttpOnly; Secure; Path=/; SameSite=Strict`,
       "Location": "/test/ka" // redirect after login
     }
   });
