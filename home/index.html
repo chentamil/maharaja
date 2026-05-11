@@ -20,10 +20,10 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="https://www.achabazar.com/css/style.css" rel="stylesheet">
+    <link href="http://localhost:8080/css/style.css" rel="stylesheet">
     <!-- Favicon -->
-    <!-- <link rel="icon" href="https://www.achabazar.com/images/sdj-logo.jpg" type="image/jpeg"> -->
-    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/8DjMQVcC/Whats-App-Image-2026-03-16-at-22-59-59.jpg">
+    <!-- <link rel="icon" href="http://localhost:8080/images/sdj-logo.jpg" type="image/jpeg"> -->
+     <link rel="icon" href="http://localhost:8080/mr-logo-new.jpg" type="image/jpeg">
 
 </head>
 
@@ -183,7 +183,7 @@
         <div class="container">
             <a href="https://www.achabazar.com/" class="navbar-brand fw-bold"><img data-visualcompletion="media-vc-image"
                     style="width: 48px;height: 48px; object-fit: contain;border-radius: 4px;"
-                    src="https://i.ibb.co/8DjMQVcC/Whats-App-Image-2026-03-16-at-22-59-59.jpg">
+                    src="http://localhost:8080/mr-logo-new.jpg"">
                         <span class="brand-text ms-2 d-none d-sm-inline">
                             Maharaja Retail
                         </span>
@@ -214,7 +214,7 @@
                   <li class="nav-item"><a class="nav-link" href="/#pricing">Rate Card</a></li>
                   <li class="nav-item"><a class="nav-link" href="/#contact">Location</a></li>
                 </ul>
-                <a href="pages/appointment" class="fs-6 btn btn-sm btn-custom text-center text-white">Book Appointment</a>
+                <a href="pages/appointment" class="fs-6 btn btn-sm btn-custom text-center text-white">Quick Enquiry</a>
               </div>
             </div>
         </div>
@@ -562,19 +562,477 @@
             margin-right: auto;
         }
     </style>    
-<!-- STATS -->
+<!-- ratingspecs -->
+<!-- Pricing Plans starts here -->
 <section class="py-5 bg-light text-center">
-<div class="container">
-<div class="row">
+<style>
+        .pricing {
+            padding: 60px 0;
+        }
 
-<div class="col-md-3"><h3>4.8★</h3><p>Google Rating</p></div>
-<div class="col-md-3"><h3>125+</h3><p>Reviews</p></div>
-<div class="col-md-3"><h3>1 Year</h3><p>Of Excellence</p></div>
-<div class="col-md-3"><h3>2</h3><p>Specialties</p></div>
+        .tick {
+            color: #198754;
+            font-weight: bold;
+            font-size: 20px;
+        }
 
-</div>
-</div>
+        .cross {
+            color: #dc3545;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* MOBILE TABS */
+        .mobile-tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+        }
+
+        .mobile-tabs button {
+            flex: 0 0 auto;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            background: #202942;
+            color: white;
+            font-weight: 600;
+        }
+
+        .mobile-tabs button.active {
+            background: #4ac4f3;
+            color: #fff;
+        }
+
+        @media(min-width: 992px) {
+            .mobile-tabs {
+                display: none;
+            }
+        }
+
+        /* MOBILE COLUMN SWITCH */
+        @media(max-width: 991px) {
+
+            .desktop-table th,
+            .desktop-table td {
+                display: none;
+            }
+
+            .desktop-table th:first-child,
+            .desktop-table td:first-child {
+                display: table-cell;
+            }
+        }
+
+        /* TABLE CONTAINER */
+        .table-container {
+            max-height: 600px;
+            overflow: auto;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* STICKY HEADER */
+        .desktop-table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: #202942;
+            color: #fff;
+            text-align: center;
+            vertical-align: middle;
+            padding: 18px 12px;
+        }
+
+        .desktop-table td:first-child {
+            font-weight: 600;
+            color: #202942;
+            background: #f8f9fc;
+            min-width: 240px;
+            text-align: left;
+        }
+
+        .desktop-table td {
+            vertical-align: middle;
+            text-align: center;
+            padding: 14px 12px;
+        }
+
+        .plan-price {
+            color: #4ac4f3;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .table-bordered>:not(caption)>*>* {
+            border-width: 1px;
+        }
+    </style>
+
+
+    <section class="pricing" id="pricing">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: #202942;">Pricing Plans</h2>
+                <p class="text-muted">
+                    We provide modern, fast, and SEO-optimized websites.
+                </p>
+            </div>
+
+            <!-- MOBILE TABS -->
+            <div class="mobile-tabs">
+                <button class="active" data-column="1">Basic</button>
+                <button data-column="2">Standard</button>
+                <button data-column="3">E-commerce</button>
+                <button data-column="4">Enterprise</button>
+            </div>
+
+            <!-- TABLE -->
+            <div class="table-container table-responsive">
+
+                <table class="table table-bordered desktop-table mb-0">
+
+                    <thead>
+                        <tr>
+                            <th class="fs-4 fw-bold">Features</th>
+
+                            <th>
+                                <div class="fs-4 fw-bold">Basic</div>
+                                <div class="plan-price">₹499</div>
+                                <small>/ mo</small>
+                            </th>
+
+                            <th>
+                                <div class="fs-4 fw-bold">Standard</div>
+                                <div class="plan-price">₹999</div>
+                                <small>/ mo</small>
+                            </th>
+
+                            <th>
+                                <div class="fs-4 fw-bold">E-commerce</div>
+                                <div class="plan-price">₹1999</div>
+                                <small>/ mo</small>
+                            </th>
+
+                            <th>
+                                <div class="fs-4 fw-bold">Enterprise</div>
+                                <div class="plan-price">₹4999</div>
+                                <small>/ mo</small>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Static Pages</td>
+                            <td>5</td>
+                            <td>Upto 25</td>
+                            <td>Upto 100</td>
+                            <td>Unlimited</td>
+                        </tr>
+
+                        <tr>
+                            <td>Hosting Included</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Mobile/Laptop Responsive</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Free SSL Certificate</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Search Engine Optimized</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Google Map Integration</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Whatsapp Chat Integration</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Mobile Canvas Menu</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Social Media Links</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Hero Slider</td>
+                            <td>1 Slider</td>
+                            <td>3 Sliders</td>
+                            <td>Unlimited</td>
+                            <td>Unlimited + Video</td>
+                        </tr>
+
+                        <tr>
+                            <td>Back To Top Button</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Support</td>
+                            <td>1 Week</td>
+                            <td>1 Month</td>
+                            <td>3 Months</td>
+                            <td>1 Year</td>
+                        </tr>
+
+                        <tr>
+                            <td>Theme Templates</td>
+                            <td>Basic</td>
+                            <td>Premium</td>
+                            <td>Custom Premium</td>
+                            <td>Fully Custom UI/UX</td>
+                        </tr>
+
+                        <tr>
+                            <td>Standard Contact Form</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Google Analytics Integration</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>301 Redirect to WWW</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Google Recaptcha</td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Custom Contact Form</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Protected Pages</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Zoom Gallery</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>GST Bill B2C</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>UPI Dynamic QR</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Priority Support</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Custom Animations</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Payment Gateway</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Admin Dashboard</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Custom API Integration</td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="cross">✖</span></td>
+                            <td><span class="tick">✔</span></td>
+                        </tr>
+
+                        <tr>
+                            <td class="fw-bold">Choose Plan</td>
+
+                            <td>
+                                <button class="btn btn-dark px-4 py-2"
+                                    style="background:#202942; border:none; border-radius:8px;">
+                                    Get Started
+                                </button>
+                            </td>
+
+                            <td>
+                                <button class="btn px-4 py-2 text-white"
+                                    style="background:#4ac4f3; border:none; border-radius:8px;">
+                                    Get Started
+                                </button>
+                            </td>
+
+                            <td>
+                                <button class="btn btn-dark px-4 py-2"
+                                    style="background:#202942; border:none; border-radius:8px;">
+                                    Get Started
+                                </button>
+                            </td>
+
+                            <td>
+                                <button class="btn btn-dark px-4 py-2"
+                                    style="background:#202942; border:none; border-radius:8px;">
+                                    Get Started
+                                </button>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const buttons = document.querySelectorAll('.mobile-tabs button');
+        const table = document.querySelector('.desktop-table');
+
+        buttons.forEach(btn => {
+
+            btn.addEventListener('click', () => {
+
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const col = parseInt(btn.getAttribute('data-column'));
+
+                const ths = table.querySelectorAll('th');
+                const rows = table.querySelectorAll('tbody tr');
+
+                // HEADER
+                ths.forEach((th, index) => {
+
+                    th.style.display =
+                        (index === 0 || index === col)
+                            ? 'table-cell'
+                            : 'none';
+
+                });
+
+                // BODY
+                rows.forEach(row => {
+
+                    row.querySelectorAll('td').forEach((td, index) => {
+
+                        td.style.display =
+                            (index === 0 || index === col)
+                                ? 'table-cell'
+                                : 'none';
+
+                    });
+
+                });
+
+            });
+
+        });
+    </script>
+
+
 </section>
+<!-- Pricing Plans ends here -->
     <!-- OFFER -->
     <section class="highlight text-center">
     <div class="container">
@@ -2033,7 +2491,7 @@ outline: 1px solid red;
 
                 <!-- google-recaptcha -->
                 <div class="col-12 text-center mt-2 recaptcha-inline small text-muted">
-                  <img class="img-fluid rounded-2" src="https://www.achabazar.com/images/google-recaptcha.webp" alt="google-recaptcha">
+                  <img class="img-fluid rounded-2" src="http://localhost:8080/images/google-recaptcha.webp" alt="google-recaptcha">
                 </div>
 
                 <!-- Security Note -->
