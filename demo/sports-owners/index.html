@@ -15,6 +15,29 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 
+<style>
+  @media (max-width: 767.98px) {
+
+    input.form-control,
+    select.form-select {
+      min-width: 5rem;
+      /* or 10vw, see below */
+      margin-bottom: 0.5rem;
+    }
+
+    select.form-select {
+      min-width: 7.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    td.date-td {
+      min-width: 7.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+  }
+</style>
+
 <body class="bg-light">
 
   <!-- TOAST -->
@@ -48,6 +71,9 @@
     <!-- DASHBOARD -->
 
     <div id="dashboard" style="display:none;">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-danger" onclick="logout()">Logout</button>
+      </div>
 
       <!-- ANALYTICS -->
       <div class="row my-4">
@@ -87,18 +113,6 @@
         <h4>
           Slot Management
         </h4>
-
-        <div>
-
-          <button class="btn btn-success me-2" onclick="saveAllChanges()">
-            Save All
-          </button>
-
-          <button class="btn btn-danger" onclick="logout()">
-            Logout
-          </button>
-
-        </div>
 
       </div>
 
@@ -321,14 +335,13 @@
       </script>
       <!-- Multi Select ends here -->
 
-
       <!-- TABLE -->
       <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
         <table class="table table-bordered bg-white w-100">
 
           <thead class="sticky-top bg-dark text-light">
 
-            <tr>
+            <tr class="text-center">
 
               <th><input type="checkbox" id="select-all" onclick="toggleAllCheckboxes(this)"></th>
 
@@ -355,6 +368,13 @@
           <tbody id="table-body"></tbody>
 
         </table>
+      </div>
+
+      <!-- Save All Changes -->
+      <div class="d-grid gap-2 col-6 mx-auto mt-4">
+        <button class="btn btn-success btn-lg" onclick="saveAllChanges()">
+          Save All
+        </button>
       </div>
 
     </div>
@@ -414,6 +434,19 @@
       </div>
 
       <hr style="border-color: rgba(255,255,255,0.2);">
+
+          <div class="text-center mb-3 social-icons">
+            <i class="bi bi-facebook fs-3 me-3" style="color:#1877F2; cursor:pointer;" onclick="window.open('https://www.facebook.com/victorysports_kpm','_blank')"></i>
+
+            <i class="bi bi-instagram fs-3 me-3" style="color:#E1306C; cursor:pointer;" onclick="window.open('https://www.instagram.com/victorysports_kpm/','_blank')"></i>
+
+            <i class="bi bi-youtube fs-3" style="color:#FF0000; cursor:pointer;" onclick="window.open('https://www.youtube.com/@victorysports_kpm','_blank')"></i>
+
+            <!-- <i class="bi bi-twitter fs-3 me-3" style="color:#1DA1F2; cursor:pointer;"
+                onclick="window.open('https://www.twitter.com/victorysports_kpm','_blank')"></i>     -->
+    </div>
+
+    <hr style="border-color: rgba(255,255,255,0.2);">
 
       <!-- Bottom -->
       <div class="text-center">
@@ -571,20 +604,20 @@
             </select>
           </td>
 
-          <td>${slot.date}</td>
+          <td class="date-td">${slot.date}</td>
 
           <td>
-            <input class="form-control mb-3" value="${slot.start_time || ''}"
+            <input class="form-control" value="${slot.start_time || ''}"
             onchange="trackEdit(${slot.id},'start_time',this.value)">
           </td>
 
           <td>
-            <input class="form-control mb-3" value="${slot.end_time || ''}"
+            <input class="form-control" value="${slot.end_time || ''}"
             onchange="trackEdit(${slot.id},'end_time',this.value)">
           </td>
 
           <td>
-            <input class="form-control mb-3" value="${slot.price || 0}"
+            <input class="form-control" value="${slot.price || 0}"
             onchange="trackEdit(${slot.id},'price',this.value)">
           </td>
 
@@ -917,7 +950,3 @@
 </body>
 
 </html>
-
-
-
-
