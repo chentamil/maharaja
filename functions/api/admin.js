@@ -7,14 +7,19 @@ export async function onRequest(context) {
     const cookie =
     request.headers.get("Cookie") || "";
 
-    const cookie =
-    request.headers.get("Cookie") || "";
-
     const tokenMatch =
     cookie.match(/sb_access_token=([^;]+)/);
 
+    if (!tokenMatch) {
+
+    return new Response("Unauthorized", {
+      status: 401
+    });
+
+  }
+
     const accessToken =
-    tokenMatch ? tokenMatch[1] : null;
+        tokenMatch[1];
 
   const method = request.method;
 
