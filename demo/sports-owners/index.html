@@ -551,31 +551,22 @@
     }
 
     async function checkUser() {
-      try {
-        const response = await fetch('/api/me', {
-          credentials: "include"
-        });
 
-        if (response.status === 401) {
-          document.getElementById("login-box").style.display = "block";
-          return;
-        }
+      const response = await fetch('/api/me', {
+        credentials: "include"
+      });
 
-        const data = await response.json();
+      if (response.status === 401) {
 
-        if (data.authenticated) {
-          showDashboard();
-        } else {
-          document.getElementById("login-box").style.display = "block";
-        }
-
-      } catch (err) {
-        console.log("Auth check failed:", err);
         document.getElementById("login-box").style.display = "block";
+
+        return;
       }
+
+      showDashboard();
     }
 
-    window.addEventListener("DOMContentLoaded", checkUser);
+    checkUser();
 
 
 

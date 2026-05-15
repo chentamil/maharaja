@@ -1,28 +1,21 @@
 export async function onRequest(context) {
 
-  const cookieHeader =
+  const cookie =
     context.request.headers.get("Cookie") || "";
 
-  console.log("RAW COOKIE HEADER:", cookieHeader);
+  const tokenMatch =
+    cookie.match(/sb_access_token=([^;]+)/);
 
-  // safer parsing (IMPORTANT)
-  const cookies = Object.fromEntries(
-    cookieHeader.split(";").map(c => {
-      const [k, ...v] = c.trim().split("=");
-      return [k, v.join("=")];
-    })
-  );
+  if (!tokenMatch) {
 
-  const token = cookies.sb_access_token;
+    return new Response("Unauthorized", {
+      status: 401
+    });
 
-  if (!token) {
-    return Response.json({
-      authenticated: false,
-      reason: "sb_access_token missing"
-    }, { status: 401 });
   }
 
   return Response.json({
     authenticated: true
   });
+
 }
