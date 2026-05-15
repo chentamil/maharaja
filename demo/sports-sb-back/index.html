@@ -12,6 +12,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 
 <style>
@@ -124,13 +125,13 @@
         <div class="row g-2">
 
           <div class="col-md-2">
-             <label class="form-label">Date</label>
+
             <input type="date" id="slot-date" class="form-control">
 
           </div>
 
           <div class="col-md-2">
-            <label class="form-label">Court</label>
+
             <select id="slot-court" class="form-select">
 
               <option value="1">
@@ -146,25 +147,25 @@
           </div>
 
           <div class="col-md-2">
-            <label class="form-label">From</label>
+
             <input type="text" id="slot-start" class="form-control" placeholder="6AM">
 
           </div>
 
           <div class="col-md-2">
-            <label class="form-label">To</label>
+
             <input type="text" id="slot-end" class="form-control" placeholder="7AM">
 
           </div>
 
           <div class="col-md-2">
-            <label class="form-label">Price</label>
+
             <input type="number" id="slot-price" class="form-control" placeholder="400">
 
           </div>
 
           <div class="col-md-1">
-            <label class="form-label">Status</label>
+
             <select id="slot-status" class="form-select">
 
               <option value="available">
@@ -299,19 +300,10 @@
           }
           if (!confirm(`Delete ${ids.length} selected slots?`)) return;
 
-          const response = await fetch('/api/admin', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              action: 'bulkDelete',
-              ids
-            })
-          });
-
-          if (!response.ok) {
+          const { error } = await client.from("slots").delete().in("id", ids);
+          if (error) {
             showToast("Delete failed");
+            console.log(error);
             return;
           }
 
@@ -330,20 +322,10 @@
             return;
           }
 
-          const response = await fetch('/api/admin', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              action: 'bulkStatus',
-              ids,
-              status
-            })
-          });
-
-          if (!response.ok) {
+          const { error } = await client.from("slots").update({ status }).in("id", ids);
+          if (error) {
             showToast("Status update failed");
+            console.log(error);
             return;
           }
 
@@ -482,6 +464,17 @@
 
   <script>
 
+    // =========================
+    // SUPABASE CONFIG
+    // =========================
+
+    const SUPABASE_URL = "https://icdiykwunftdzdoiwkkd.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_nyOci0wrkzdeDoOX2qKaRg_JkRtRsFR";
+
+    const client = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
 
     let allData = [];
     let editedSlots = {};
@@ -504,6 +497,21 @@
     // =========================
     // AUTH
     // =========================
+    checkUser();
+
+    async function checkUser() {
+
+      const {
+        data: { session }
+      } = await client.auth.getSession();
+
+      if (session) {
+
+        showDashboard();
+
+      }
+
+    }
 
     async function login() {
 
@@ -513,21 +521,15 @@
       const password =
         document.getElementById("password").value;
 
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+      const { error } =
+        await client.auth.signInWithPassword({
           email,
           password
-        })
-      });
+        });
 
-      if (!response.ok) {
+      if (error) {
 
-        showToast("Invalid login");
-
+        showToast(error.message);
         return;
       }
 
@@ -536,7 +538,7 @@
 
     async function logout() {
 
-      await fetch('/api/logout');
+      await client.auth.signOut();
 
       location.reload();
     }
@@ -550,48 +552,32 @@
       loadSlots();
     }
 
-    async function checkUser() {
-
-      const response = await fetch('/api/me', {
-        credentials: "include"
-      });
-
-      if (response.status === 401) {
-
-        document.getElementById("login-box").style.display = "block";
-
-        return;
-      }
-
-      showDashboard();
-    }
-
-    checkUser();
-
-
-
     // =========================
     // LOAD & RENDER
     // =========================
     async function loadSlots() {
 
-      try {
+      const { data, error } =
+        await client
+          .from("slots")
+          .select("*")
+          .order("date", { ascending: true })
+          .order("court_id", { ascending: true })
+          .order("start_time", { ascending: true });
+      // table is sorted by date → court → time.
 
-        const response = await fetch('/api/admin');
+      if (error) {
 
-        const data = await response.json();
+        console.log(error);
 
-        allData = data;
-
-        renderTable(data);
-
-        updateAnalytics(data);
-
-      } catch (err) {
-
-        console.log(err);
-
+        return;
       }
+
+      allData = data;
+
+      renderTable(data);
+
+      updateAnalytics(data);
     }
 
     function renderTable(data) {
@@ -678,7 +664,8 @@
     // =========================
     async function saveAllChanges() {
 
-      const updates = Object.keys(editedSlots);
+      const updates =
+        Object.keys(editedSlots);
 
       if (updates.length === 0) {
 
@@ -689,7 +676,10 @@
 
       for (const id of updates) {
 
-        const updateData = editedSlots[id];
+        const updateData =
+          editedSlots[id];
+
+        // auto rebuild time field
 
         if (
           updateData.start_time
@@ -698,7 +688,9 @@
         ) {
 
           const existing =
-            allData.find(s => s.id == id);
+            allData.find(
+              s => s.id == id
+            );
 
           const start =
             updateData.start_time
@@ -710,21 +702,18 @@
 
           updateData.time =
             `${start} - ${end}`;
+
         }
 
-        const response = await fetch('/api/admin', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            action: 'update',
-            id,
-            data: updateData
-          })
-        });
+        const { error } =
+          await client
+            .from("slots")
+            .update(updateData)
+            .eq("id", id);
 
-        if (!response.ok) {
+        if (error) {
+
+          console.log(error);
 
           showToast("Update failed");
 
@@ -738,6 +727,7 @@
       showToast("All changes saved!");
 
       loadSlots();
+
     }
 
     // =========================
@@ -766,33 +756,31 @@
       const time =
         `${start_time} - ${end_time}`;
 
-      const response = await fetch('/api/admin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          action: 'add',
-          data: {
-            date,
-            court_id,
-            start_time,
-            end_time,
-            time,
-            price,
-            status
-          }
-        })
-      });
+      const { error } =
+        await client
+          .from("slots")
+          .insert([
+            {
+              date,
+              court_id,
+              start_time,
+              end_time,
+              time,
+              price,
+              status
+            }
+          ]);
 
-      if (!response.ok) {
-        showToast("Add failed");
+      if (error) {
+
+        showToast(error.message);
+
         return;
       }
 
-      showToast("Slot added successfully!");
-
+      showToast("Slot added successfully!");  // ✅ success toast
       loadSlots();
+
     }
 
     // =========================
@@ -802,24 +790,12 @@
 
       if (!confirm("Delete slot?")) return;
 
-      const response = await fetch('/api/admin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          action: 'delete',
-          id
-        })
-      });
-
-      if (!response.ok) {
-        showToast("Delete failed");
-        return;
-      }
+      await client
+        .from("slots")
+        .delete()
+        .eq("id", id);
 
       showToast("Slot deleted");
-
       loadSlots();
     }
 
@@ -952,16 +928,8 @@
       }
 
       slots.forEach(async s => {
-        await fetch('/api/admin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          action: 'add',
-          data: s
-        })
-      });
+        const { error } = await client.from("slots").insert([s]);
+        if (error) console.log(error);
       });
 
       showToast(`Generated ${slots.length} slots for Court ${court_id}`);

@@ -9,7 +9,7 @@ export async function onRequest() {
         "Content-Type": "application/json",
 
         "Set-Cookie":
-          "sb_access_token=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0"
+          "acha_access_token=; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=0"
       }
     }
   );

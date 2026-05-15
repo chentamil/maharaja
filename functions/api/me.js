@@ -4,7 +4,7 @@ export async function onRequest(context) {
     context.request.headers.get("Cookie") || "";
 
   const tokenMatch =
-    cookie.match(/sb_access_token=([^;]+)/);
+    cookie.match(/acha_access_token=([^;]+)/);
 
   if (!tokenMatch) {
 
