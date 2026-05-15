@@ -1,21 +1,19 @@
 export async function onRequest(context) {
 
-  const cookie =
-    context.request.headers.get("Cookie") || "";
+  const cookie = context.request.headers.get("Cookie") || "";
 
-  const tokenMatch =
-    cookie.match(/sb_access_token=([^;]+)/);
+  console.log("COOKIE HEADER:", cookie);
+
+  const tokenMatch = cookie.match(/sb_access_token=([^;]+)/);
 
   if (!tokenMatch) {
-
-    return new Response("Unauthorized", {
-      status: 401
-    });
-
+    return new Response(JSON.stringify({
+      error: "No cookie found"
+    }), { status: 401 });
   }
 
   return Response.json({
-    authenticated: true
+    authenticated: true,
+    tokenPreview: tokenMatch[1].slice(0, 10)
   });
-
 }
