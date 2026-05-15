@@ -552,8 +552,9 @@
 
     async function checkUser() {
 
-      const response =
-        await fetch('/api/me');
+      const response = await fetch('/api/me', {
+        credentials: "include"
+      });
 
       if (response.status === 401) {
 
