@@ -48,7 +48,7 @@ export async function onRequestPost(context) {
           "Content-Type": "application/json",
 
           "Set-Cookie":
-            `sb_access_token=${data.access_token}; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age=86400`
+            `sb_access_token=${data.access_token}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=86400`
         }
       }
     );
