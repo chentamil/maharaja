@@ -11,8 +11,7 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  <!-- Supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
 
   <style>
     body {
@@ -53,36 +52,21 @@
 
 <body>
 <div class="container py-4">
-  <div id="error-message" class="alert alert-danger d-none text-center"></div>
   <h2 class="mb-4 text-center">🏓 Victory Pickle Court Booking</h2>
 
 <div class="mb-3 text-center d-flex justify-content-center align-items-center gap-3">
+  
   <button id="prev-day" class="btn btn-outline-primary">
     <i class="bi bi-chevron-left"></i>
   </button>
+
   <input type="date" id="selected-date" class="form-control w-auto">
+
   <button id="next-day" class="btn btn-outline-primary">
     <i class="bi bi-chevron-right"></i>
   </button>
+
 </div>
-
-<script>
-  document.getElementById('prev-day').addEventListener('click', () => {
-    const dateInput = document.getElementById('selected-date');
-    const currentDate = new Date(dateInput.value);
-    currentDate.setDate(currentDate.getDate() - 1);
-    dateInput.value = currentDate.toISOString().split('T')[0];
-    renderSlots(dateInput.value);
-  });
-
-  document.getElementById('next-day').addEventListener('click', () => {
-    const dateInput = document.getElementById('selected-date');
-    const currentDate = new Date(dateInput.value);
-    currentDate.setDate(currentDate.getDate() + 1);
-    dateInput.value = currentDate.toISOString().split('T')[0];
-    renderSlots(dateInput.value);
-  });
-</script>
 
   <p class="text-center text-muted">
     📍 Kanchipuram | Live slot availability below
@@ -152,25 +136,49 @@
 </footer>
 
 <script>
-  const SUPABASE_URL = "https://icdiykwunftdzdoiwkkd.supabase.co";
-  const SUPABASE_KEY = "sb_publishable_nyOci0wrkzdeDoOX2qKaRg_JkRtRsFR";
-  const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
   const PHONE = "919597547118";
   let allData = [];
 
   async function loadSlots() {
-    const { data, error } = await client
-      .from("slots")
-      .select(`*, courts (id, name)`)
-      .order("court_id", { ascending: true })
-      .order("date", { ascending: true });
-    if (error) { console.log("Supabase Error:", error); return; }
+
+    const res = await fetch('/api/public-slots');
+
+    const data = await res.json();
+
     allData = data || [];
+
     setToday();
   }
+  
   loadSlots();
 
   const dateInput = document.getElementById("selected-date");
+  const dateInput = document.getElementById("selected-date");
+
+document.getElementById('prev-day').addEventListener('click', () => {
+
+  const currentDate = new Date(dateInput.value);
+
+  currentDate.setDate(currentDate.getDate() - 1);
+
+  dateInput.value = currentDate.toISOString().split('T')[0];
+
+  renderSlots(dateInput.value);
+
+});
+
+document.getElementById('next-day').addEventListener('click', () => {
+
+  const currentDate = new Date(dateInput.value);
+
+  currentDate.setDate(currentDate.getDate() + 1);
+
+  dateInput.value = currentDate.toISOString().split('T')[0];
+
+  renderSlots(dateInput.value);
+
+});
   const today = new Date().toISOString().split("T")[0];
   dateInput.setAttribute("min", today);
 
@@ -184,23 +192,15 @@
     renderSlots(this.value);
   });
 
-function getSlotHour(slot) {
-  const raw = slot.start_time || slot.time || "";
-  const startTime = raw.split("-")[0].trim();
-  
-  // Extract hour and period
-  const match = startTime.match(/(\d+)(?::\d+)?\s*(am|pm)?/i);
-  if (!match) return 0;
-  
-  let hour = parseInt(match[1]);
-  const period = match[2] ? match[2].toLowerCase() : '';
-  
-  // Convert 12-hour to 24-hour
-  if (period === 'pm' && hour !== 12) hour += 12;
-  if (period === 'am' && hour === 12) hour = 0;
-  
-  return hour;
-}
+  function getSlotHour(slot) {
+    const raw = slot.start_time || slot.time || "";
+    const startTime = raw.split("-")[0].trim();
+    let hour = parseInt(startTime);
+    if (isNaN(hour)) return 0;
+    if (startTime.toLowerCase().includes("pm") && hour !== 12) hour += 12;
+    if (startTime.toLowerCase().includes("am") && hour === 12) hour = 0;
+    return hour;
+  }
 
   function renderSlots(date) {
     const container = document.getElementById("slots-container");
@@ -318,12 +318,7 @@ function getSlotHour(slot) {
   }
 </script>
 
-
-
-
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
 </body>
 </html>
