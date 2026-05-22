@@ -1170,9 +1170,18 @@ generateTimeOptions("m-gen-slot-end");
 
       data.forEach(slot => {
 
+      let rowClass = "";
+
+      if (slot.status === "booked") {
+        rowClass = "table-danger opacity-50";
+      } 
+      else if (slot.status === "available") {
+        rowClass = "table-success1 opacity-50-1";
+      }
+
         body.innerHTML += `
 
-        <tr>
+        <tr class="${rowClass}">
           <td><input type="checkbox" class="slot-checkbox" data-id="${slot.id}"></td>
 
           <td>${slot.id}</td>
