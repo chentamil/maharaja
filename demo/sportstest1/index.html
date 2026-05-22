@@ -491,12 +491,30 @@ body {
 
           <div class="col-md-2">
             <label class="form-label">From</label>
-            <input type="text" id="gen-slot-from" class="form-control" placeholder="6AM or 6:30AM">
+            <div class="d-flex gap-2">
+
+              <select id="gen-slot-start" class="form-select"></select>
+
+              <select id="gen-slot-start-period" class="form-select" style="max-width:90px;">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+
+            </div>
           </div>
 
           <div class="col-md-2">
             <label class="form-label">To</label>
-            <input type="text" id="gen-slot-to" class="form-control" placeholder="10AM or 10:30AM">
+            <div class="d-flex gap-2">
+
+              <select id="gen-slot-end" class="form-select"></select>
+
+              <select id="gen-slot-end-period" class="form-select" style="max-width:90px;">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+
+            </div>
           </div>
 
           <div class="col-md-2">
@@ -846,16 +864,33 @@ body {
 
         </div>
 
-        <div class="mb-3">
-          <label>From</label>
-          <input type="text" id="m-gen-slot-from" class="form-control">
-        </div>
+<div class="mb-3">
+  <label>From</label>
+  <div class="d-flex gap-2">
 
-        <div class="mb-3">
-          <label>To</label>
-          <input type="text" id="m-gen-slot-to" class="form-control">
-        </div>
+    <select id="m-gen-slot-start" class="form-select"></select>
 
+    <select id="m-gen-slot-start-period" class="form-select" style="max-width:90px;">
+      <option value="AM">AM</option>
+      <option value="PM">PM</option>
+    </select>
+
+  </div>
+</div>
+
+<div class="mb-3">
+  <label>To</label>
+  <div class="d-flex gap-2">
+
+    <select id="m-gen-slot-end" class="form-select"></select>
+
+    <select id="m-gen-slot-end-period" class="form-select" style="max-width:90px;">
+      <option value="AM">AM</option>
+      <option value="PM">PM</option>
+    </select>
+
+  </div>
+</div>
         <div class="mb-3">
           <label>Price</label>
           <input type="number" id="m-gen-slot-price" class="form-control" value="400">
@@ -1082,13 +1117,21 @@ function generateTimeOptions(selectId) {
   }
 }
 
-// desktop
+// pc laptop manual add
 generateTimeOptions("slot-start");
 generateTimeOptions("slot-end");
 
-// mobile
+// mobile manual
 generateTimeOptions("m-slot-start");
 generateTimeOptions("m-slot-end");
+
+// ⭐ generator desktop (NEW)
+generateTimeOptions("gen-slot-start");
+generateTimeOptions("gen-slot-end");
+
+// ⭐ generator mobile (NEW)
+generateTimeOptions("m-gen-slot-start");
+generateTimeOptions("m-gen-slot-end");
 
     checkUser();
 
@@ -1453,11 +1496,17 @@ const end_time = convertTo12Hour(
   document.getElementById("gen-slot-court").value =
     document.getElementById("m-gen-slot-court").value;
 
-  document.getElementById("gen-slot-from").value =
-    document.getElementById("m-gen-slot-from").value;
+document.getElementById("gen-slot-start").value =
+  document.getElementById("m-gen-slot-start").value;
 
-  document.getElementById("gen-slot-to").value =
-    document.getElementById("m-gen-slot-to").value;
+document.getElementById("gen-slot-start-period").value =
+  document.getElementById("m-gen-slot-start-period").value;
+
+document.getElementById("gen-slot-end").value =
+  document.getElementById("m-gen-slot-end").value;
+
+document.getElementById("gen-slot-end-period").value =
+  document.getElementById("m-gen-slot-end-period").value;
 
   document.getElementById("gen-slot-price").value =
     document.getElementById("m-gen-slot-price").value;
@@ -1474,8 +1523,15 @@ const end_time = convertTo12Hour(
     function generateSlotsStandalone() {
       const date = document.getElementById("gen-slot-date").value;
       const court_id = document.getElementById("gen-slot-court").value;
-      const from = document.getElementById("gen-slot-from").value;
-      const to = document.getElementById("gen-slot-to").value;
+const from = convertTo12Hour(
+  document.getElementById("gen-slot-start").value,
+  document.getElementById("gen-slot-start-period").value
+);
+
+const to = convertTo12Hour(
+  document.getElementById("gen-slot-end").value,
+  document.getElementById("gen-slot-end-period").value
+);
       const price = Number(document.getElementById("gen-slot-price").value) || 400;
 
       if (!date || !from || !to) {
