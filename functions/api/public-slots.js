@@ -1,5 +1,12 @@
 export async function onRequest(context) {
 
+  const ENABLE_CACHE = true;
+
+  //  const ENABLE_CACHE = false;
+  // cache is enabled by default, but can be disabled by replacing true with false, during testing/debug
+  // s-maxage=300 means the response will be cached for 5 minutes, and stale-while-revalidate=60 means that if the cache is stale, it can still be served while a new response is being fetched in the background for up to 1 minute
+  
+
   const SUPABASE_URL = context.env.SUPABASE_URL;
   const SUPABASE_KEY = context.env.SUPABASE_ANON_KEY;
 
@@ -7,11 +14,15 @@ export async function onRequest(context) {
 
   const cacheKey = new Request(context.request.url, context.request);
 
-  // Try edge cache first
-  const cached = await cache.match(cacheKey);
+  // Cache read
+  if (ENABLE_CACHE) {
 
-  if (cached) {
-    return cached;
+    const cached = await cache.match(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
   }
 
   try {
@@ -31,15 +42,21 @@ export async function onRequest(context) {
     const response = new Response(JSON.stringify(data), {
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "public, s-maxage=150, stale-while-revalidate=30",
+        ...(ENABLE_CACHE && {
+          "Cache-Control": "public, s-maxage=150, stale-while-revalidate=30"
+        }),
         "x-generated-at": Date.now().toString()
       }
     });
 
-    // Store in Cloudflare edge cache
-    context.waitUntil(
-      cache.put(cacheKey, response.clone())
-    );
+    // Cache write
+    if (ENABLE_CACHE) {
+
+      context.waitUntil(
+        cache.put(cacheKey, response.clone())
+      );
+
+    }
 
     return response;
 
