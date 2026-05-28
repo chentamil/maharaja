@@ -5,14 +5,13 @@ export async function onRequest(context) {
 
   const cache = caches.default;
 
-  // Current request
   const cacheKey = new Request(context.request.url, context.request);
 
-  // Try cache first
-  let response = await cache.match(cacheKey);
+  // Try edge cache first
+  const cached = await cache.match(cacheKey);
 
-  if (response) {
-    return response;
+  if (cached) {
+    return cached;
   }
 
   try {
@@ -21,18 +20,18 @@ export async function onRequest(context) {
       `${SUPABASE_URL}/rest/v1/slots?select=*,courts(id,name)`,
       {
         headers: {
-          apikey: SUPABASE_KEY
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${SUPABASE_KEY}`
         }
       }
     );
 
     const data = await res.json();
 
-    response = new Response(JSON.stringify(data), {
+    const response = new Response(JSON.stringify(data), {
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=60",
-        "x-cache-status": "MISS",
+        "Cache-Control": "public, s-maxage=150, stale-while-revalidate=30",
         "x-generated-at": Date.now().toString()
       }
     });
