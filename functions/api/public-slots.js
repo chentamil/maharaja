@@ -17,7 +17,10 @@ export async function onRequest(context) {
     const data = await res.json();
 
     return new Response(JSON.stringify(data), {
-      headers: { "Content-Type": "application/json" }
+      headers: { 
+        "Content-Type": "application/json",
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=60"
+       }
     });
 
   } catch (err) {
